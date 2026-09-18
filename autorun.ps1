@@ -10,7 +10,7 @@ $options = @(
     # "--dry-run"
 )
 
-# rclone copy "D:/OneDrive/" "$drive/onedrive" $options
+rclone copy "D:/OneDrive/" "$drive/onedrive" $options
 rclone copy "$HOME/.config" "$drive/.config" --max-size 10M $options
 rclone copy "$documents/startup-scripts" "$drive/startup-scripts" $options
 rclone copy "C:/Program Files/EqualizerAPO/config/config.txt" "$drive/equalizerapo/config" $options
@@ -30,5 +30,7 @@ rclone copy "$HOME/AppData/Roaming/Mailspring/keymap.json" "$drive/mailspring" $
 
 rclone copy "C:/Users/Hugo/AppData/Local/BraveSoftware/Brave-Browser/User Data/Default/History-journal" "$drive/browser/chromium/history" $options
 rclone copy "C:/Users/Hugo/AppData/Local/BraveSoftware/Brave-Browser/User Data/Default/History" "$drive/browser/chromium/history" $options
+rclone copy "C:/Users/Hugo/AppData/Local/BraveSoftware/Brave-Browser/User Data/Default/Bookmarks" "$drive/browser/chromium/bookmarks" $options
+rclone copy "C:/Users/Hugo/AppData/Local/BraveSoftware/Brave-Browser/User Data/Default/BookmarkMergedSurfaceOrdering" "$drive/browser/chromium/bookmarks" $options
 
-rclone tree "$drive"
+rclone tree "$drive" -all
