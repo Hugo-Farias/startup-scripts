@@ -3,10 +3,12 @@ $drive = "gdrive:rclone"
 $documents = "D:/Users/Hugo/Documents"
 $options = @(
     "-v"
-    # "-P"
+    "-P"
     # "--copy-links"
-    "--exclude", "**/.git/**"
+    "--exclude", ".gitignore"
     "--exclude", ".git/**"
+    "--exclude", "**/.gitignore"
+    "--exclude", "**/.git*/**"
     "--exclude", "**/*.log"
     "--exclude", "**/.log/**"
     # "--dry-run"
@@ -37,15 +39,12 @@ upload "Saves:3DS" "D:/Games/!Emulation/3DS/#/.config/sdmc" "$drive/saves/3ds/sd
 upload "Saves:Xenia" "$documents/System_Documents/Xenia" "$drive/saves/xenia/"
 upload "Saves:Tekken 7" "$HOME/AppData/Local/TekkenGame/Saved/SaveGames/TEKKEN7" "$drive/saves/tekken7"
 upload "PowerShell config" "$documents/System_Documents/PowerShell" "$drive/powershell/"
-
 upload "Mailspring config" "C:/Users/Hugo/AppData/Roaming/Mailspring/config.json" "$drive/mailspring"
 upload "Mailspring keymap" "$HOME/AppData/Roaming/Mailspring/keymap.json" "$drive/mailspring"
-
 upload "Browser history" "C:/Users/Hugo/AppData/Local/BraveSoftware/Brave-Browser/User Data/Default/History" "$drive/browser/chromium/history" 
 upload "Browser history-journal" "C:/Users/Hugo/AppData/Local/BraveSoftware/Brave-Browser/User Data/Default/History-journal" "$drive/browser/chromium/history" 
 upload "Browser Bookmarks" "C:/Users/Hugo/AppData/Local/BraveSoftware/Brave-Browser/User Data/Default/Bookmarks" "$drive/browser/chromium/bookmarks" 
 upload "Browser Bookmark Merged" "C:/Users/Hugo/AppData/Local/BraveSoftware/Brave-Browser/User Data/Default/BookmarkMergedSurfaceOrdering" "$drive/browser/chromium/bookmarks" 
-
 upload "Onedrive" "D:/OneDrive/" "$drive/onedrive" 
 
 # rclone tree "$drive" -all
