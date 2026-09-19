@@ -1,3 +1,4 @@
+$Host.UI.RawUI.WindowTitle = "rclone-scheduled-backup"
 $drive = "gdrive:rclone"
 $documents = "D:/Users/Hugo/Documents"
 $options = @(
@@ -5,6 +6,7 @@ $options = @(
     # "-P"
     # "--copy-links"
     "--exclude", "**/.git/**"
+    "--exclude", ".git/**"
     "--exclude", "**/*.log"
     "--exclude", "**/.log/**"
     # "--dry-run"
@@ -19,10 +21,10 @@ function upload {
     )
 
     Write-Host "Uploading $Name..."
-    rclone copy $Source $Destination $options $AdditionalOptions
+    # rclone copy $Source $Destination $options $AdditionalOptions
 }
 
-upload ".config" "$HOME/.config" "$drive/.config" @("--max-size", "10M")
+upload ".config" "$HOME/.config" "$drive/.config" @("--max-size", "10M", "--exclude", "nvim/**")
 upload "startup-scripts" "$documents/startup-scripts" "$drive/startup-scripts"
 upload "EqualizerAPO config" "C:/Program Files/EqualizerAPO/config/config.txt" "$drive/equalizerapo/config"
 upload "Curriculo" "$documents/Curriculo/" "$drive/curriculo"
@@ -46,4 +48,4 @@ upload "Browser Bookmark Merged" "C:/Users/Hugo/AppData/Local/BraveSoftware/Brav
 
 upload "Onedrive" "D:/OneDrive/" "$drive/onedrive" $options
 
-rclone tree "$drive" -all
+# rclone tree "$drive" -all
