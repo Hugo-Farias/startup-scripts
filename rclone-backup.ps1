@@ -35,12 +35,12 @@ function upload {
         [string[]]$AdditionalOptions = @()
     )
 
-    Write-Host "Uploading $Name..."
+    Write-Host "`r`n===$Name==="  -ForegroundColor Green
     Write-Host $date
     rclone copy $Source $Destination $options $AdditionalOptions
 }
 
-upload ".config" "$HOME/.config" "$drive/.config" @("--max-size", "10M")
+upload ".config" "$HOME/.config" "$drive/.config" @("--max-size", "10M", "--exclude", ".wrangler/")
 upload "startup-scripts" "$documents/startup-scripts" "$drive/startup-scripts"
 upload "EqualizerAPO config" "C:/Program Files/EqualizerAPO/config/config.txt" "$drive/equalizerapo/config"
 upload "Curriculo" "$documents/Curriculo/" "$drive/curriculo"
